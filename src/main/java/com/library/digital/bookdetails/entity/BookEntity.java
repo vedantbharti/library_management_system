@@ -1,15 +1,13 @@
 package com.library.digital.bookdetails.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -28,7 +26,7 @@ public class BookEntity {
 
     @Column(name = "book_author")
     @ManyToMany(targetEntity = AuthorEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id", referencedColumnName = "bookId")
+//    @JoinColumn(name = "author_id", referencedColumnName = "bookId")
     private List<AuthorEntity> bookAuthor;
 
     @Column(name = "book_genre")

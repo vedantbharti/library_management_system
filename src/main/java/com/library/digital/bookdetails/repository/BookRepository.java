@@ -12,17 +12,17 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<BookEntity,Long> {
 
-    public BookEntity findByBookId(Long bookId);
+    BookEntity findByBookId(Long bookId);
 
-    public BookEntity findByIsbn(String isbn);
+    BookEntity findByIsbn(String isbn);
 
-    public List<BookEntity> findAllByBookName(String bookName);
+    List<BookEntity> findAllByBookName(String bookName);
 
-    @Query("SELECT * FROM BookEntity b JOIN b.bookAuthor a WHERE a.authorName = ?1")
-    public List<BookEntity> findAllByBookAuthor(String authorName);
+    @Query("SELECT * FROM BookEntity b WHERE ?1 IN (SELECT a.authorName FROM b.bookAuthor a WHERE a.authorName = ?1)")
+    List<BookEntity> findAllByBookAuthor(String authorName);
 
 
-    public List<BookEntity> findAllByGenre(String genre);
+    List<BookEntity> findAllByGenre(String genre);
 
-    public List<BookEntity> findAllByLanguage(String language);
+    List<BookEntity> findAllByLanguage(String language);
 }

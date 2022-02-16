@@ -2,7 +2,6 @@ package com.library.digital.bookdetails.service;
 
 import com.library.digital.bookdetails.entity.BookEntity;
 import com.library.digital.bookdetails.model.Book;
-import com.library.digital.bookdetails.repository.AuthorRepository;
 import com.library.digital.bookdetails.repository.BookRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,10 +30,10 @@ public class BookService {
 
     private List<BookEntity> bookEntityList;
 
-    public boolean saveBookDetails(){
+    public boolean saveBookDetails(BookEntity book){
         boolean saveStatus = false;
         try{
-            bookRepository.save(bookEntity);
+            bookRepository.save(book);
             saveStatus = true;
         } catch(Exception e){
             log.info("Error occurred while saving the book details: {}", e.getMessage());
@@ -42,32 +41,9 @@ public class BookService {
         return saveStatus;
     }
 
-    public boolean updateBookDescription(Long id, String description){
-        boolean updateStatus = false;
-        try{
-            bookEntity = bookRepository.getById(id);
-            bookEntity.setDescription(description);
-            bookRepository.save(bookEntity);
-            updateStatus = true;
-        } catch (Exception e){
-            log.info("Error occurred while updating the record: {}", e.getMessage());
-        }
 
-        return updateStatus;
-    }
-
-    public boolean updateBookCredits(Long id, Long credits){
-        boolean updateStatus = false;
-        try{
-            bookEntity = bookRepository.getById(id);
-            bookEntity.setCredits(credits);
-            bookRepository.save(bookEntity);
-            updateStatus = true;
-        } catch (Exception e){
-            log.info("Error occurred while updating the record: {}", e.getMessage());
-        }
-
-        return updateStatus;
+    public List<BookEntity> getAllBooks(){
+        return bookRepository.findAll();
     }
 
     public BookEntity getBookDetailsById(Long id){
@@ -132,5 +108,16 @@ public class BookService {
         }
 
         return bookEntityList;
+    }
+
+    public boolean deleteBookRecord(Long id){
+        boolean deleteStatus = false;
+        try{
+            bookRepository.deleteById(id);
+            deleteStatus = true;
+        } catch(Exception e){
+            log.info("Error occurred while deleting the book details: {}", e.getMessage());
+        }
+        return deleteStatus;
     }
 }
