@@ -23,9 +23,9 @@ public class AuthorEntity {
 
 
     @ManyToMany(cascade = {CascadeType.ALL})
-//    @JoinTable(name = "author_books",
-//            joinColumns = @JoinColumn(name = "AuthorEntity_authorId", referencedColumnName = "authorId"),
-//            inverseJoinColumns = @JoinColumn(name = "books_bookId", referencedColumnName = "bookId"))
+    @JoinTable(name = "author_books",
+            joinColumns = @JoinColumn(name = "AuthorEntity_authorId", referencedColumnName = "authorId"),
+            inverseJoinColumns = @JoinColumn(name = "books_bookId", referencedColumnName = "bookId"))
     private List<BookEntity> books;
 
     @Column(name = "author_nationality")

@@ -68,6 +68,8 @@ public class BookController {
         }
     }
 
+
+
     @DeleteMapping(value = "/delete_book", params = "id")
     public String deleteBook(@RequestParam Long id){
         if(bookService.deleteBookRecord(id)){
