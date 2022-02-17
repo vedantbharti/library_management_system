@@ -80,7 +80,7 @@ public class BookService {
 
     public List<BookEntity> getBooksByAuthor(String authorName){
         try{
-            bookEntityList = bookRepository.findAllByBookAuthor(authorName);
+            bookEntityList = bookRepository.findByBookAuthorAuthorName(authorName);
         } catch(Exception e){
             log.info("Error occurred while fetching the books by author: {}", e.getMessage());
         }

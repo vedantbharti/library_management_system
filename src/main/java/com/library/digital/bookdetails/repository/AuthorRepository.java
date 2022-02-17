@@ -19,6 +19,6 @@ public interface AuthorRepository extends JpaRepository<AuthorEntity,Long> {
     List<AuthorEntity> findAllByAuthorNationality(String authorNationality);
 
 
-    @Query("SELECT * FROM AuthorEntity a WHERE (SELECT b.bookName FROM a.books b WHERE b.bookName = ?1)")
-    List<AuthorEntity> findAllByBooks(String booksName);
+//    @Query("SELECT * FROM AuthorEntity a WHERE (SELECT b.bookName FROM a.books b WHERE b.bookName = ?1)")
+    List<AuthorEntity> findByBooksBookName(String booksName);
 }

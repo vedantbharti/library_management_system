@@ -16,6 +16,7 @@ public class BookEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "book_id")
     private Long bookId;
 
     @Column(name = "book_name")
@@ -25,8 +26,8 @@ public class BookEntity {
     private String isbn;
 
     @Column(name = "book_author")
-    @ManyToMany(targetEntity = AuthorEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id", referencedColumnName = "bookId")
+    @ManyToMany(mappedBy = "books")
+    //@JoinColumn(name = "author_id", referencedColumnName = "bookId")
     private List<AuthorEntity> bookAuthor;
 
     @Column(name = "book_genre")
@@ -38,6 +39,6 @@ public class BookEntity {
     @Column(name = "book_description")
     private String description;
 
-    @Column(name = "credits")
-    private Long credits;
+//    @Column(name = "credits")
+//    private Long credits;
 }

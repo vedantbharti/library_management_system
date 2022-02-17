@@ -18,8 +18,8 @@ public interface BookRepository extends JpaRepository<BookEntity,Long> {
 
     List<BookEntity> findAllByBookName(String bookName);
 
-    @Query("SELECT * FROM BookEntity b WHERE ?1 IN (SELECT a.authorName FROM b.bookAuthor a WHERE a.authorName = ?1)")
-    List<BookEntity> findAllByBookAuthor(String authorName);
+    //@Query("SELECT * FROM BookEntity b WHERE ?1 IN (SELECT a.authorName FROM b.bookAuthor a WHERE a.authorName = ?1)")
+    List<BookEntity> findByBookAuthorAuthorName(String authorName);
 
 
     List<BookEntity> findAllByGenre(String genre);

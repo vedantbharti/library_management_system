@@ -22,10 +22,10 @@ public class AuthorEntity {
     private String authorName;
 
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany
     @JoinTable(name = "author_books",
-            joinColumns = @JoinColumn(name = "AuthorEntity_authorId", referencedColumnName = "authorId"),
-            inverseJoinColumns = @JoinColumn(name = "books_bookId", referencedColumnName = "bookId"))
+            joinColumns = @JoinColumn(name = "author_id", referencedColumnName = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"))
     private List<BookEntity> books;
 
     @Column(name = "author_nationality")

@@ -36,7 +36,7 @@ public class AuthorService {
     }
 
     public List<AuthorEntity> getAuthorsForBook(String books){
-        return authorRepository.findAllByBooks(books);
+        return authorRepository.findByBooksBookName(books);
     }
 
     public boolean saveAuthorDetails(AuthorEntity authorEntity){
